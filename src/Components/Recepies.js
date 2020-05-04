@@ -1,10 +1,18 @@
 import React from "react";
-const Recepie = ({ title, calories, image }) => {
+import style from "./recepies.module.css";
+const Recepie = ({ title, calories, image, ingredients }) => {
+  const cal = parseInt(calories);
+
   return (
-    <div>
+    <div className={style.recipe}>
       <h1>{title}</h1>
-      <p>{calories}</p>
-      <img src={image} alt="" />
+      <img className={style.image} src={image} alt="" />
+      <p>Calories: {cal}</p>
+      <ol>
+        {ingredients.map((ingredient) => (
+          <li>{ingredient.text}</li>
+        ))}
+      </ol>
     </div>
   );
 };

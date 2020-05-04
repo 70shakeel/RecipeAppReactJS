@@ -23,11 +23,11 @@ function App() {
     getReceipes();
   }, [query]);
 
-  const updateSearch = e => {
+  const updateSearch = (e) => {
     setSearch(e.target.value);
   };
 
-  const getSearch = e => {
+  const getSearch = (e) => {
     e.preventDefault();
     setQuery(search);
   };
@@ -41,17 +41,20 @@ function App() {
           onChange={updateSearch}
         />{" "}
         <button className="search-button" type="submit">
-          Search{" "}
-        </button>{" "}
-      </form>{" "}
-      {recepies.map(recepie => (
-        <Recepie
-          key={recepie.recipe.label}
-          title={recepie.recipe.label}
-          calories={recepie.recipe.calories}
-          image={recepie.recipe.image}
-        />
-      ))}{" "}
+          Search
+        </button>
+      </form>
+      <div className="recipes">
+        {recepies.map((recepie) => (
+          <Recepie
+            key={recepie.recipe.label}
+            title={recepie.recipe.label}
+            calories={recepie.recipe.calories}
+            image={recepie.recipe.image}
+            ingredients={recepie.recipe.ingredients}
+          />
+        ))}
+      </div>
     </div>
   );
 }
